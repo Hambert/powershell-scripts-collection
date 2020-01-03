@@ -1,0 +1,17 @@
+[General]
+SendMailAlway=False
+
+[Mail]
+mailPw=C:\Users\Administrator\MailPW.txt
+mailSmtpURL=smtpr.example.com
+mailTo=admin@example.com
+mailFrom=admin@example.com
+mailCc=info@example.com
+
+
+[Other]
+VerboseLogging=False
+
+
+# from https://serverfault.com/questions/186030/how-to-use-a-config-file-ini-conf-with-a-powershell-script
+#
