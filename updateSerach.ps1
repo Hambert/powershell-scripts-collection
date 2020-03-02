@@ -31,16 +31,16 @@ if ( $count -gt 0) {
 
     # create Mail Body
     $mailBody = $mailBody + "###################################  Windows Update  #######################################`n"
-    $mailBody = "There are " + $count + " new updatews for " + $Computername + " available:`n`n"
+    $mailBody = "There are " + $count + " new update(s) for " + $Computername + " available:`n`n"
 
      For ($i=0; $i -lt $Count; $i++) {
         $Update  = $searchresult.Updates.Item($i)
-        $mailBody = $mailBody + "title: " + $Update.Title + "`n"
+        $mailBody = $mailBody + "Title: " + $Update.Title + "`n"
         $mailBody = $mailBody + "KB: " + $Update.KBArticleIDs + "`n"
-        $mailBody = $mailBody + "security bulletin ids: " + $Update.SecurityBulletinIDs + "`n"
-        $mailBody = $mailBody + "msrc severity: " + $Update.MsrcSeverity + "`n"
-        $mailBody = $mailBody + "is downloade: " +$Update.IsDownloaded + "`n"
-        $mailBody = $mailBody + "info url: " + $Update.MoreInfoUrls + "`n`n"
+        $mailBody = $mailBody + "Security bulletin IDs: " + $Update.SecurityBulletinIDs + "`n"
+        $mailBody = $mailBody + "Msrc severity: " + $Update.MsrcSeverity + "`n"
+        $mailBody = $mailBody + "Is downloaded: " +$Update.IsDownloaded + "`n"
+        $mailBody = $mailBody + "Info url: " + $Update.MoreInfoUrls + "`n`n"
      }
 
 } else {
