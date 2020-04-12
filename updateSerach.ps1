@@ -89,7 +89,12 @@ if ( ( $oldVersion -ne $newVersion ) -or  ( $count -gt 0 ) ) {
         $mailSubject = "Updates on " + $Computername + " available!"
     }
 
-    Send-MailMessage -Credential $cred -from $from -to $to -CC $cc -Subject $mailSubject -body $mailBody  -encoding ([System.Text.Encoding]::UTF8) -UseSSL
+  
+    if ( !$cc ) {
+       Send-MailMessage -Credential $cred -from $from -to $to  -Subject $mailSubject -body $mailBody  -encoding ([System.Text.Encoding]::UTF8) -UseSSL
+    } else {
+       Send-MailMessage -Credential $cred -from $from -to $to -CC $cc -Subject $mailSubject -body $mailBody  -encoding ([System.Text.Encoding]::UTF8) -UseSSL
+    }
 
  } else {
 
@@ -105,7 +110,10 @@ if ( ( $oldVersion -ne $newVersion ) -or  ( $count -gt 0 ) ) {
         $cc = $h.Get_Item("mailCC")
         $cred = New-Object System.Management.Automation.PSCredential $from, $pw
         $mailSubject = "No Updates on " + $Computername + " available"
-
-        Send-MailMessage -Credential $cred -from $from -to $to -CC $cc -Subject $mailSubject -body $mailBody  -encoding ([System.Text.Encoding]::UTF8) -UseSSL
+        if ( !$cc ) {
+            Send-MailMessage -Credential $cred -from $from -to $to  -Subject $mailSubject -body $mailBody  -encoding ([System.Text.Encoding]::UTF8) -UseSSL
+        } else {
+           Send-MailMessage -Credential $cred -from $from -to $to -CC $cc -Subject $mailSubject -body $mailBody  -encoding ([System.Text.Encoding]::UTF8) -UseSSL
+        }
     }
  }
